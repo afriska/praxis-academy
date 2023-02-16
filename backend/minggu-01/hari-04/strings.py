@@ -78,3 +78,37 @@ print(challenge.endswith('tion'))
 #expandtabs() tab to spaces, default size is 8
 tes = 'thirty\tdays\tof\tpython'
 print(tes)
+print(tes.expandtabs())
+print(tes.expandtabs(10))
+#print(tes.expandtabs(10))
+
+#find() return first index founded, if not found return -1
+challenge = 'thirty days of python'
+print(challenge.find('y')) 
+print(challenge.find('ti')) 
+
+#rfind() like find() but last
+print(challenge.rfind('y')) 
+print(challenge.rfind('th'))
+
+#index() return lowest index of substring, not found error
+challenge = 'thirty days of python'
+sub_string = 'da'
+print(challenge.index(sub_string))  # 7
+print(challenge.index(sub_string, 0, 9)) # error
+
+#rindex() like index() but highest index
+#isalnum() checks alphanumeric char, space not a alnum
+test = '30days'
+print(test.isalnum())
+test = '30 days'
+print(test.isalnum())
+
+#isalpha() checks just alpha char
+test = ' days'
+print(test.isalpha())
+
+#isdecimal() checks if decimal
+#isdecimal() checks if all numbers and some other unicode char for numbers
+
+
