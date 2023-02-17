@@ -18,10 +18,12 @@ person_info = {
 # print(name)
 
 # #int to float
-# num_int = 10
-# print('num_int', num_int)
-# num_float = float(num_int)
-# print('num_float', num_float)
+num_int = 10
+print('num_int', num_int)
+
+num_float = float(num_int)
+print(type(num_float))
+print('num_float', num_float)
 
 # #int to string
 # num_str = str(num_int)
@@ -40,10 +42,10 @@ person_info = {
 # print(myName)
 # print(myName_in_list)
 
-tes = '  123'
-tes_int =int(tes)
-print(tes_int)
+# tes = '  123'
+# tes_int =int(tes)
+# print(tes_int)
 
-num = 2.7
-num_int = int(num)
-print(num, num_int)
+# num = 2.7
+# num_int = int(num)
+# print(num, num_int)
