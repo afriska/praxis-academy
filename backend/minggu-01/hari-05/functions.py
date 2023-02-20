@@ -30,10 +30,10 @@
 # print('Weight of an object in Newtons: ', weight_of_object(100, 9.81))
 
 #----------------------------------------------------------------------#
-def add_two_numbers(a, b):
-    return a + b
+# def add_two_numbers(a, b):
+#     return a + b
 
-print(add_two_numbers(12,28))
+# print(add_two_numbers(12,28))
 
 #----------------------------------------------------------------------#
 # def convert_celcius_to_fahrenheit(c):
@@ -47,5 +47,20 @@ print(add_two_numbers(12,28))
 #         print(item)
 
 # print_list(fruits)
+
+#----------------------------------------------------------------------#
+def evens_and_odds(num):
+    numOdds = 0
+    numEvens = 0
+    for i in range(num + 1):
+        if i % 2 == 0:
+            numEvens += 1
+        else:
+            numOdds +=1
+    else:
+        print('The number of odds are %d.' %numOdds)
+        print('The number of evens are %d.' %numEvens)
+
+print(evens_and_odds(100))
 
 #----------------------------------------------------------------------#
