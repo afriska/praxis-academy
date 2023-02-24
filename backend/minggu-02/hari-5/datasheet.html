@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datasheets</title>
+</head>
+<body>
+    <p>Nama : {{data['Nama']}}</p>
+    <p>Keterangan : {{data['Keterangan']}}</p>
+    <p>Pin : {{data['Pin'][0]}}, {{data['Pin'][1]}}, {{data['Pin'][2]}}, {{data['Pin'][3]}}</p>
+    <p>Test : </p>
+
+    <ol>
+        <!-- For loop logic of jinja template -->
+        {%for i in range(0, len)%}
+          
+            <li><a href="/{{Components[i].replace(' ','')}}">{{Components[i]}}</a></li>
+        {%endfor%}
+          
+        </ol>
+</body>
+</html>

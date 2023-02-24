@@ -1,0 +1,133 @@
+postgres=# \c db
+You are now connected to database "db" as user "postgres".
+
+
+db=# CREATE TABLE basket_a (
+db(# a INT PRIMARY KEY,
+db(# fruit_a VARCHAR(100) NOT NULL);
+CREATE TABLE
+db=# CREATE TABLE basket_b (
+db(# b INT PRIMARY KEY,
+db(# fruit_b VARCHAR(100) NOT NULL);
+CREATE TABLE
+
+
+db=# INSERT INTO basket_a (a, fruit_a)
+db-# VALUES
+db-# (1, 'Apple'), 
+db-# (2, 'Orange'),
+db-# (3, 'Banana'),
+db-# (4, 'Cucumber');
+INSERT 0 4
+db=# INSERT INTO basket_b (b, fruit_b)
+db-# VALUES
+db-# (1, 'Orange'),
+db-# (2, 'Apple'),
+db-# (3, 'Watermelon'),
+db-# (4, 'Pear');
+INSERT 0 4
+
+
+db=# SELECT * FROM basket_a
+db-# ;
+ a | fruit_a
+---+----------
+ 1 | Apple
+ 2 | Orange
+ 3 | Banana
+ 4 | Cucumber
+(4 rows)
+
+
+db=# SELECT * FROM basket_b;
+ b |  fruit_b
+---+------------
+ 1 | Orange
+ 2 | Apple
+ 3 | Watermelon
+ 4 | Pear
+(4 rows)
+
+
+db=# SELECT a, fruit_a, b, fruit_b
+db-# FROM basket_a INNER JOIN basket_b
+db-# ON fruit_a = fruit_b;
+ a | fruit_a | b | fruit_b
+---+---------+---+---------
+ 1 | Apple   | 2 | Apple
+ 2 | Orange  | 1 | Orange
+(2 rows)
+
+
+db=# SELECT a, fruit_a, b, fruit_b
+db-# FROM basket_a LEFT JOIN basket_b
+db-# ON fruit_a = fruit_b;
+ a | fruit_a  | b | fruit_b
+---+----------+---+---------
+ 1 | Apple    | 2 | Apple
+ 2 | Orange   | 1 | Orange
+ 3 | Banana   |   |
+ 4 | Cucumber |   |
+(4 rows)
+
+
+db=# SELECT a, fruit_a, b, fruit_b
+db-# FROM basket_a RIGHT JOIN basket_b
+db-# ON fruit_a = fruit_b;
+ a | fruit_a | b |  fruit_b
+---+---------+---+------------
+ 2 | Orange  | 1 | Orange
+ 1 | Apple   | 2 | Apple
+   |         | 3 | Watermelon
+   |         | 4 | Pear
+(4 rows)
+
+
+db=# SELECT a, fruit_a, b, fruit_b
+db-# FROM basket_a LEFT JOIN basket_b
+db-# ON fruit_a = fruit_b
+db-# WHERE b IS NULL;
+ a | fruit_a  | b | fruit_b
+---+----------+---+---------
+ 3 | Banana   |   |
+ 4 | Cucumber |   |
+(2 rows)
+
+
+db=# SELECT a, fruit_a, b, fruit_b
+db-# FROM basket_a RIGHT JOIN basket_b
+db-# ON fruit_a = fruit_b
+db-# WHERE a IS NULL;
+ a | fruit_a | b |  fruit_b
+---+---------+---+------------
+   |         | 3 | Watermelon
+   |         | 4 | Pear
+(2 rows)
+
+
+db=# SELECT a, fruit_a, b, fruit_b
+db-# FROM basket_a FULL JOIN basket_b
+db-# ON fruit_a = fruit_b
+db-# ;
+ a | fruit_a  | b |  fruit_b
+---+----------+---+------------
+ 1 | Apple    | 2 | Apple
+ 2 | Orange   | 1 | Orange
+ 3 | Banana   |   |
+ 4 | Cucumber |   |
+   |          | 3 | Watermelon
+   |          | 4 | Pear
+(6 rows)
+
+
+db=# SELECT a, fruit_a, b, fruit_b
+db-# FROM basket_a FULL JOIN basket_b
+db-# ON fruit_a = fruit_b
+db-# WHERE a IS NULL OR b IS NULL;
+ a | fruit_a  | b |  fruit_b
+---+----------+---+------------
+ 3 | Banana   |   |
+ 4 | Cucumber |   |
+   |          | 3 | Watermelon
+   |          | 4 | Pear
+(4 rows)
